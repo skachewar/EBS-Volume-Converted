@@ -1,0 +1,33 @@
+StartAt: ScanVolumes
+States:
+  ScanVolumes:
+    Type: Task
+    Resource: arn:aws:lambda:ap-southeast-2:735189764173:function:scan_volumes
+    Next: ProcessVolumes
+  ProcessVolumes:
+    Type: Map
+    ItemsPath: $
+    Iterator:
+      StartAt: ConvertVolume
+      States:
+        ConvertVolume:
+          Type: Task
+          Resource: arn:aws:lambda:ap-southeast-2:735189764173:function:convert_volume
+          Next: Wait30Sec
+        Wait30Sec:
+          Type: Wait
+          Seconds: 30
+          Next: VerifyVolume
+        VerifyVolume:
+          Type: Task
+          Resource: arn:aws:lambda:ap-southeast-2:735189764173:function:VerifyVolumes
+          Next: LogToDynamoDB
+        LogToDynamoDB:
+          Type: Task
+          Resource: arn:aws:lambda:ap-southeast-2:735189764173:function:LogToDynamoDB
+          Next: NotifySNS
+        NotifySNS:
+          Type: Task
+          Resource: arn:aws:lambda:ap-southeast-2:735189764173:function:NotifyVolumes
+          End: true
+    End: true
