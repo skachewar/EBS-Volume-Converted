@@ -126,6 +126,10 @@ Schedule: `rate(1 day)`
 
 ```text
 Subject: EBS Volume Converted
-Volume ID: vol-123456
-Status: completed
+Volume ID: vol-0e2c8d8076493fd09
+Instance ID: i-0f47c9e82016b9689
+Status: ModificationStarted
+Verify: optimizing
+Error Code:
+Error Message:
 ```
