@@ -129,28 +129,3 @@ Subject: EBS Volume Converted
 Volume ID: vol-123456
 Status: completed
 ```
-
----
-
-## 🧪 Testing
-
-* Create test gp2 volume
-* Add tag: `AutoConvert=true`
-* Start Step Function manually
-* Verify logs, email alerts, and DynamoDB entries
-
----
-
-## 💰 Benefits
-
-* Reduces storage cost
-* Eliminates manual operations
-* Provides full audit trail
-* Scalable serverless design
-* Easy to extend for multi-region automation
-
----
-
-## 👨‍💻 Author
-
-Built as an AWS DevOps / Cloud Automation project.
